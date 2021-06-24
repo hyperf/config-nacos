@@ -11,27 +11,11 @@ declare(strict_types=1);
  */
 namespace Hyperf\ConfigNacos;
 
-use Hyperf\ConfigNacos\Listener\MainWorkerStartListener;
-use Hyperf\ConfigNacos\Listener\OnShutdownListener;
-use Hyperf\ConfigNacos\Process\InstanceBeatProcess;
-use Hyperf\ConfigNacos\Service\IPReader;
-use Hyperf\ConfigNacos\Service\IPReaderInterface;
-
 class ConfigProvider
 {
     public function __invoke(): array
     {
         return [
-            'listeners' => [
-                MainWorkerStartListener::class,
-                OnShutdownListener::class,
-            ],
-            'processes' => [
-                InstanceBeatProcess::class,
-            ],
-            'dependencies' => [
-                IPReaderInterface::class => IPReader::class,
-            ],
         ];
     }
 }
